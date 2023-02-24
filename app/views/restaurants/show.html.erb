@@ -8,3 +8,10 @@
 
   <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
 </div>
+
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %></li>
+    <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+  <% end %>
+</ul>
